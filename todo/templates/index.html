@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Hello World</h1>
+<form action="{% url 'add_todo' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+<input type="submit" value="Send">
+<br>
+<div class="col">
+<div class="border">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            {% for todo in todos %}
+            <tr>
+            
+                <td>{{forloop.counter}}</td>
+                <td>{{todo.title}}</td>
+                <td>{{todo.status}}</td>
+                <td>{{todo.priority}}</td>
+            
+           </tr>
+            {% endfor %}
+        
+    </tbody>
+    </table>
+   
+</div>
+</div>
+<div>
+</div>
+{% endblock content %}  
